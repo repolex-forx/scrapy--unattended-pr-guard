@@ -8,7 +8,7 @@
     {
       "@id": "https://repolex.ai/r/scrapy/unattended-pr-guard/commit/1e3c31134253813934af43f3505d4492eee26c2a",
       "git:hexsha": "1e3c31134253813934af43f3505d4492eee26c2a",
-      "repolex:parseStatus": "metadata_complete"
+      "repolex:parseStatus": "ast_complete"
     },
     {
       "@id": "https://repolex.ai/r/scrapy/unattended-pr-guard/commit/575f5d14e8f91dabd7da30a2ee22e3fdaad41474",
