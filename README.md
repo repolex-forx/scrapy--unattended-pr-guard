@@ -1,1 +1,98 @@
-Initializing
+# Repolex Knowledge Graph of scrapy/unattended-pr-guard
+
+RDF knowledge graph data for [scrapy/unattended-pr-guard](https://github.com/scrapy/unattended-pr-guard), parsed by [repolex](https://repolex.ai).
+
+> **Note**: This data is experimental and subject to change without notice.
+
+## How to use this data
+
+The easiest way to get started is to install the [rlex](https://github.com/repolex-ai/rlex) query tool:
+
+```bash
+cargo install --git https://github.com/repolex-ai/rlex
+```
+
+Verify the install:
+
+```bash
+rlex --help
+```
+
+**rlex is designed to be used primarily by LLMs in a terminal.** Start up your favorite AI assistant and ask it to use rlex. It handles the SPARQL — you just ask questions in plain English.
+
+To load this repo's data:
+
+```bash
+rlex download scrapy/unattended-pr-guard
+```
+
+Consult `rlex --help` for other options, including SPARQL queries, HTTP server, and interactive visualization.
+
+## Data structure
+
+All data is stored as gzip-compressed [N-Quads](https://www.w3.org/TR/n-quads/) (`.nq.gz`), a standard RDF format that can be loaded into any triplestore or graph database.
+
+```
+.
+├── aggregate
+│   ├── ast
+│   │   └── 1e3c31134253813934af43f3505d4492eee26c2a
+│   │       └── chunk-001.nq.gz
+│   └── repolex
+│       └── 1e3c31134253813934af43f3505d4492eee26c2a
+│           └── chunk-001.nq.gz
+├── blob
+│   ├── 1468ea58f2cdf0c2825abff393f00e51d9a75765.nq.gz
+│   ├── 261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64.nq.gz
+│   ├── 2e9d8b37bbfbb02b532975d3b8d1f8cebd7a2ab4.nq.gz
+│   ├── 4a13afb4fb77536424ded49ed8bfe59c37389f92.nq.gz
+│   ├── 623d48cfa6b6f2ba551dde2435254ed5a1b63862.nq.gz
+│   ├── 6ed08be6c71bb3ab13e8d0351ceb30e555be0334.nq.gz
+│   ├── 7b21b2e525be03198c0304987bc4ee2654e063d0.nq.gz
+│   ├── 7da586be214a6899581672cc2d7445c4d014e691.nq.gz
+│   ├── 7ec77a5c4711adae5d7b60ea29d61f973a8341c7.nq.gz
+│   ├── 969572eeb537d7b627144965d72dcb9afbdb799d.nq.gz
+│   ├── 9f8d42ec4ebab2fc9013a53afc8c5e3e506c5329.nq.gz
+│   ├── a7d0322ac8364cee96ce82437e214c9455552321.nq.gz
+│   ├── b622f4749bf9745e78b1fa7e7240a2916acf6d9b.nq.gz
+│   ├── bada998c6e72c098e1b6362dc03fd5933e2c813b.nq.gz
+│   ├── c34b6c81dec262c3177fe5e2fdd74c8e194faca9.nq.gz
+│   ├── c6ba6856ef47c73049ca2821c65cab5299484dd8.nq.gz
+│   ├── c777e3cc3e6d9f0ba724b7d9a1de8c9b449a82dc.nq.gz
+│   ├── cda531c6095a931f3dcef3946c2644e1dfb538c1.nq.gz
+│   ├── dcabfbb87aa9fe10dddac2f2e9bd204ec6e3fe5b.nq.gz
+│   ├── f91f55e376e4e2e51550c7e6ef9891220b7d9625.nq.gz
+│   └── fd5f74cc5efbea45d385d215e3ee5cbf28f6bcbd.nq.gz
+├── branch
+│   └── branch.nq.gz
+├── commit
+│   └── commit.nq.gz
+├── filetree
+│   └── 1e3c31134253813934af43f3505d4492eee26c2a.nq.gz
+├── pr
+│   └── pr.nq.gz
+└── tag
+    └── tag.nq.gz
+
+12 directories, 28 files
+```
+
+| Directory | What it contains |
+|-----------|-----------------|
+| `blob/` | Per-file AST graphs, content-addressed by git blob SHA. Each file in the source repo gets its own graph. |
+| `aggregate/ast/` | Combined AST graph per parsed commit. Merges all blob graphs for a snapshot of the entire codebase at that point. |
+| `aggregate/lsp/` | Language Server Protocol enrichment: resolved symbols, definitions, references, and type information. |
+| `aggregate/dataflow/` | Interprocedural data flow edges between functions and modules. |
+| `aggregate/repolex/` | Combined graph (AST + LSP + dataflow) per commit. |
+| `commit/` | Git commit metadata (author, date, message, parent links). |
+| `branch/` | Branch metadata. |
+| `tag/` | Tag metadata. |
+| `filetree/` | File tree snapshots per commit (which files existed and their blob SHAs). |
+| `audit/` | Code architecture and graph audit reports per commit. |
+
+## Source repository
+
+[scrapy/unattended-pr-guard](https://github.com/scrapy/unattended-pr-guard)
+
+---
+*Parsed on 2026-10-21 by [repolex](https://repolex.ai)*

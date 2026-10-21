@@ -1,0 +1,11 @@
+{
+  "org": "scrapy",
+  "repo": "unattended-pr-guard",
+  "versions": [
+    {
+      "commit": "1e3c31134253813934af43f3505d4492eee26c2a",
+      "tag": "",
+      "parsed_at": "2026-10-21T02:53:07.211958+00:00"
+    }
+  ]
+}
